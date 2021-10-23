@@ -38,7 +38,7 @@ export default class RegisterBlock extends Component {
       password: password,
       email: this.emailRef.current.value,
     };
-    const url = "http://127.0.0.1:8000/auth/users/";
+    const url = "https://taskboard.pythonanywhere.com//auth/users/";
 
     axios({
       method: "post",

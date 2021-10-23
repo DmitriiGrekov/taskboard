@@ -23,7 +23,7 @@ export default class AddTaskBlock extends Component {
     let date = this.dateRef.current.value;
     let token = "Token " + localStorage.getItem('user_token')
 
-    let url = 'http://127.0.0.1:8000/api/v1/list/tasks/'
+    let url = 'https://taskboard.pythonanywhere.com/api/v1/list/tasks/'
     let data = {
       title: title,
       content: content,

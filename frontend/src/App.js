@@ -19,8 +19,8 @@ export default class App extends Component {
     let token = "Token " + localStorage.getItem("user_token");
     if (token != "Token null") {
       this.setState({ auth: true });
-      this.get_send_request("http://127.0.0.1:8000/auth/users/me");
-      this.get_user_tasks('http://127.0.0.1:8000/api/v1/list/tasks/')
+      this.get_send_request("https://taskboard.pythonanywhere.com/auth/users/me");
+      this.get_user_tasks('https://taskboard.pythonanywhere.com/api/v1/list/tasks/')
     }
   }
 
@@ -63,7 +63,7 @@ export default class App extends Component {
   };
 
   login_user_func = (login, password) => {
-    let url = "http://127.0.0.1:8000/auth/token/login/";
+    let url = "https://taskboard.pythonanywhere.com/auth/token/login/";
     let data = { username: login, password: password };
 
     axios({
@@ -80,8 +80,8 @@ export default class App extends Component {
       .then((response) => {
         this.setState({ auth: true, login_errors: false });
         localStorage.setItem("user_token", response.data.auth_token);
-        this.get_send_request("http://127.0.0.1:8000/auth/users/me");
-        this.get_user_tasks('http://127.0.0.1:8000/api/v1/list/tasks/')
+        this.get_send_request("https://taskboard.pythonanywhere.com/auth/users/me");
+        this.get_user_tasks('https://taskboard.pythonanywhere.com/api/v1/list/tasks/')
       })
       .catch((error) => {
         this.setState({login_errors: true})
@@ -90,7 +90,7 @@ export default class App extends Component {
 
   logout_user = (e) => {
     e.preventDefault();
-    const url = 'http://127.0.0.1:8000/auth/token/logout/'
+    const url = 'https://taskboard.pythonanywhere.com/auth/token/logout/'
     let token = "Token " + localStorage.getItem("user_token");
     axios({
       method: "post",
